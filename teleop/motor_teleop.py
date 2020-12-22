@@ -1,40 +1,33 @@
-
 import rclpy
 from rclpy.node import Node
-
 from std_msgs.msg import String
 
-
-class MinimalPublisher(Node):
-
-    def __init__(self):
-        super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(String, 'topic', 10)
-        timer_period = 0.5  # seconds
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
-
-    def timer_callback(self):
-        msg = String()
-        msg.data = 'Hello World: %d' % self.i
-        self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
-        self.i += 1
+def send_message(string):
+    msg = String()
+    msg.data = string
+    
+    publisher.publish(msg)
+    node.get_logger().info('Publicando: "{}"'.format(string))
 
 
-def main(args=None):
-    rclpy.init(args=args)
+def main():
+    rclpy.init()
+    global node
+    global publisher
+    node = Node('motor_teleop')
+    publisher = node.create_publisher(String, 'motor_command', 10)
 
-    minimal_publisher = MinimalPublisher()
+    valid_inputs = ('w', 'a', 's', 'd', 'x')
 
-    rclpy.spin(minimal_publisher)
+    while rclpy.ok():
+        key = input()
+        if key in valid_inputs:
+            send_message(key)
 
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    minimal_publisher.destroy_node()
+    #rclpy.spin(node)
+
+    node.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()
