@@ -4,7 +4,8 @@
     <name>TA19</name>
     <version>0.0.0</version>
     <description>Scripts used to teleoperate on a pair of motors</description>
-    <maintainer email="allan.py3000@gmail.com">allan</maintainer>
+    <maintainer email="allan.py3000@gmail.com">Allan Cedric</maintainer>
+    <maintainer email="gabrielnhn@ufpr.br">Gabriel Nascarella</maintainer>
     <license>Apache License 2.0</license>
     <test_depend>ament_copyright</test_depend>
     <test_depend>ament_flake8</test_depend>
