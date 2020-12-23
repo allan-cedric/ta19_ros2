@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-    <name>TA19</name>
+    <name>ta19_ros2</name>
     <version>0.0.0</version>
     <description>Scripts used to teleoperate on a pair of motors</description>
     <maintainer email="allan.py3000@gmail.com">Allan Cedric</maintainer>
